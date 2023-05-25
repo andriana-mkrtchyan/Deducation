@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Document</title>
+    <style>
+        section{
+            padding: 60px 0;
+        
+        }
+        .nav-link {
+            color: #3B5998;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #F2F2FF;">
+        <!--logo-->
+        <div class="col-md-5 text-center">
+          <a class="navbar-brand" href="/index.html">
+            <img src="/Assets/D_images/Logo.png" alt="Deducation" width="150" height="30" class="d-inline-block align-text-top rounded">
+          </a>
+        </div>
+    </nav> 
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="row">
+                    <h1>
+                        <div class="display-6 my-5 ">Let us specify some details</div>
+                    </h1> 
+                </div>
+
+
+                <form>
+                    <div class="form-group">
+                        <label for="accreditation-status" class="display-6 form-label" style="font-size:smaller">Accreditation Status</label>
+                        <select class="form-control" id="accreditation-status" name="accreditation-status" onchange="showOtherAccreditation()">
+                          <option value="In provess" selected>In process</option>
+                          <option value="Accredited">Accredited</option>
+                          <option value="Not Accredited">Not Accredited</option>
+                        </select>
+                    </div>
+                      
+                    <div class="form-group d-none mt-3" id="otherAccreditationDiv">
+                        <label for="other-accreditation" class="display-6 form-label" style="font-size:smaller">Type of accreditation</label>
+                        <input type="text" class="form-control" id="other-accreditation" name="other-accreditation" placeholder="Enter accreditation name">
+                    </div>
+                      
+                    
+                    <div class=" my-3 ">
+                        <label for="description" class="display-6 form-label" style="font-size:smaller">Type of programs offered</label>
+                        <div class="dropdown">
+                            <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+                            <button class="btn btn-outline-primary dropdown-toggle" for="btn-check-outlined" type="button" id="job-type-dropdown" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%;">
+                                Select degree types
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown-degree-programs" style="width: 100%;">
+                                <li><input class="form-check-input" type="checkbox" name="degree-programs[]" id="degree-programs-1" value="Bachelor's Degree"><label class="form-check-label ms-2" for="degree-programs-1">Bachelor's Degree</label></li>
+                                <li><input class="form-check-input" type="checkbox" name="degree-programs[]" id="degree-programs-2" value="Master's Degree"><label class="form-check-label ms-2" for="degree-programs-2">Master's Degree</label></li>
+                                <li><input class="form-check-input" type="checkbox" name="degree-programs[]" id="degree-programs-3" value="Doctoral Degree"><label class="form-check-label ms-2" for="degree-programs-3">Doctoral Degree</label></li>
+                                <li><input class="form-check-input" type="checkbox" name="degree-programs[]" id="degree-programs-4" value="Associate Degree"><label class="form-check-label ms-2" for="degree-programs-4">Associate Degree</label></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-3" id="otherAccreditationDiv">
+                        <label for="areas-of-study" class="display-6 form-label " style="font-size:smaller">Bachelor's faculties</label>
+                        <textarea class="form-control" id="areasOfStudyBachelor" rows="3" placeholder="Type each from a new line" style="resize: none;"></textarea>
+                    </div>
+                    <div class="form-group mt-3" id="otherAccreditationDiv">
+                        <label for="areas-of-study" class="display-6 form-label" style="font-size:smaller">Master's faculties</label>
+                        <textarea class="form-control" id="areasOfStudyMaster" rows="3" placeholder="Type each from a new line" style="resize: none;"></textarea>
+                    </div>
+                    <div class="form-group mt-3" id="otherAccreditationDiv">
+                        <label for="areas-of-study" class="display-6 form-label" style="font-size:smaller">Doctoral's faculties</label>
+                        <textarea class="form-control" id="areasOfStudyDoctoral" rows="3" placeholder="Type each from a new line" style="resize: none;"></textarea>                    </div>
+                    <div class="form-group mt-3" id="otherAccreditationDiv">
+                        <label for="areas-of-study" class="display-6 form-label" style="font-size:smaller">Associate's faculties</label>
+                        <textarea class="form-control" id="areasOfStudyAssociate" rows="3" placeholder="Type each from a new line" style="resize: none;"></textarea>
+                    </div>
+                
+                    
+                
+                  
+
+                <div class="text-center my-5">
+                    <p style="color:#3B5998 ">By joining you agree to our
+                        <a href="#">Privacy policy</a>
+                    </p>
+                    <div class="row justify-content-center">
+                        <div class="col m-2">
+                            <a href="/signup_university.html" type="submit" class="btn btn-primary rounded-pill w-100 " >
+                                Previous
+                            </a>
+                            
+                        </div>
+                        <div class="col m-2">
+                            <a href="/signup_university2.html" type="submit" class="btn btn-primary rounded-pill w-100" >
+                                Next
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color:#3B5998 " class="my-3">Or join with</p>
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-md-2">
+                            <a href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?redirect_uri=storagerelay%3A%2F%2Fhttps%2Fwww.linkedin.com%3Fid%3Dauth372506&response_type=permission%20id_token&scope=email%20profile%20openid&openid.realm&client_id=990339570472-k6nqn1tpmitg8pui82bfaun3jrpmiuhs.apps.googleusercontent.com&ss_domain=https%3A%2F%2Fwww.linkedin.com&fetch_basic_profile=true&gsiwebsdk=2&service=lso&o2v=1&flowName=GeneralOAuthFlow">
+                                <img src="/Assets/D_images/google_logo.png" class="img-fluid" style="max-width: 30; max-height: 30;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="https://www.facebook.com/v13.0/dialog/oauth?client_id=YOUR_APP_ID&redirect_uri=https://YOUR_REDIRECT_URI&scope=email,public_profile">
+                                <img src="/Assets/D_images/facebook_logo.png" class="img-fluid" style="max-width: 30; max-height: 30;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="#">
+                                <img src="/Assets/D_images/linkedin_logo.png" class="img-fluid" style="max-width: 30; max-height: 30;">
+                            </a>
+                        </div>
+                    </div>
+                    <p style="color:#3B5998 " class="my-5">Already have an account?
+                        <a href="/signin.html">Sign in</a>
+                    </p>
+                </div>
+                
+            </div>
+        </div>  
+    </div>
+ 
+    
+
+    <footer class="bg-light py-4 mt-5" style="background-color: #F2F2FF;">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="nav-link fw-bold fs-4" aria-current="page" href="/index.html">Deducation</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="nav-link" aria-current="page" href="#">About us</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="nav-link" aria-current="page" href="#">User assignment</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="nav-link" aria-current="page" href="#">Privacy policy</a>
+                </div>
+                <div class="col-md-3 text-center text-md-end">
+                    <p>&copy; 2023</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function showOtherAccreditation() {
+            var accreditationStatus = document.getElementById("accreditation-status");
+            var otherAccreditationDiv = document.getElementById("otherAccreditationDiv");
+        
+            if (accreditationStatus.value == "Accredited") {
+            otherAccreditationDiv.classList.remove("d-none");
+            } else {
+            otherAccreditationDiv.classList.add("d-none");
+            }
+        }
+    </script>
+  
+
+  
+    
+   
+</body>
+</html>

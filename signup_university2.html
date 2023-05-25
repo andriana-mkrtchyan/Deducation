@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Document</title>
+    <style>
+        section{
+            padding: 60px 0;
+        
+        }
+        .nav-link {
+            color: #3B5998;
+        }
+        
+        .dropzone {
+            border: 2px dashed #ccc;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .dropzone p {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .dropzone input {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #F2F2FF;">
+        <!--logo-->
+        <div class="col-md-5 text-center">
+          <a class="navbar-brand" href="/index.html">
+            <img src="/Assets/D_images/Logo.png" alt="Deducation" width="150" height="30" class="d-inline-block align-text-top rounded">
+          </a>
+        </div>
+    </nav> 
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="row">
+                    <h1>
+                        <div class="display-6 my-5 ">Please provide us with your educational programs </div>
+                    </h1> 
+                </div>
+            </div>
+            
+        </div>  
+    </div>
+
+    <div class="container my-5">
+        <div class="row text-center">
+          <div class="card shadow">
+            <div class="card-body" style="width: 100%;">
+              <div class="form-group">
+                <div class="dropzone text-center" id="dropzone">
+                  <i class="bi bi-file-earmark-pdf fs-1" id="uploadIcon"></i>
+                  <p class="lead my-3">Drag and drop PDF files here</p>
+                </div>
+                <input type="file" id="pdfInput" class="form-control d-none" accept=".pdf" multiple>
+              </div>
+              <div class="form-group">
+                <div id="pdfList"></div>
+              </div>
+              <button type="submit" class="btn btn-primary d-none" id="submit-btn">Save</button>
+              
+            </div>
+          </div>
+        </div>
+    </div>
+      
+    <script>
+        const dropzone = document.getElementById('dropzone');
+        const pdfInput = document.getElementById('pdfInput');
+        const pdfList = document.getElementById('pdfList');
+        const submitButton = document.getElementById('submit-btn');
+        const uploadIcon = document.getElementById('uploadIcon');
+      
+        
+        submitButton.addEventListener('click',(e)=>{
+            submitButton.classList.add('d-none');
+            
+        });
+      
+        function addPdfToList(file) {
+            const pdfItem = document.createElement('div');
+            pdfItem.classList.add('d-flex', 'justify-content-between', 'align-items-center', 'mb-3', 'p-3', 'bg-light');
+            pdfItem.innerHTML = `
+                <div class="d-flex align-items-center">
+                <i class="bi bi-file-earmark-pdf me-3"></i>
+                <div>${file.name}</div>
+                </div>
+                <button type="button" class="btn btn-danger" data-file="${file.name}">Remove</button>
+            `;
+            pdfList.appendChild(pdfItem);
+        }
+      
+        function displayPdfs(files) {
+            submitButton.classList.remove('d-none');
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                addPdfToList(file);
+            }
+      
+            removeUploadIcon();
+            submitButton.classList.remove('d-none');
+        }
+      
+        function removePdf(pdfItem) {
+            pdfList.removeChild(pdfItem);
+            if (pdfList.children.length === 0) {
+                submitButton.classList.add('d-none');
+                pdfList.innerHTML = '';
+                dropzone.appendChild(uploadIcon);
+            }
+        }
+      
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('bg-light');
+        });
+      
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('bg-light');
+        });
+      
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('bg-light');
+            const files = e.dataTransfer.files;
+            displayPdfs(files);
+        });
+      
+        pdfInput.addEventListener('change', () => {
+            const files = pdfInput.files;
+            displayPdfs(files);
+        });
+      
+        pdfList.addEventListener('click', (e) => {
+            if (e.target.tagName.toLowerCase() === 'button') {
+                const pdfItem = e.target.closest('.bg-light');
+                const fileName = e.target.dataset.file;
+                removePdf(pdfItem);
+            }
+        });
+
+
+    </script>
+      
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                
+
+                <div class="text-center my-5">
+
+                    <div class="text-center">
+                        <p style="color:#3B5998 " class="my-5">You can modify the information later on your profile
+                            
+                        </p>
+                    </div>
+
+                    <p style="color:#3B5998 ">By joining you agree to our
+                        <a href="#">Privacy policy</a>
+                    </p>
+                    <div class="row justify-content-center">
+                        <div class="col m-2">
+                            <a href="/signup_university1.html" type="submit" class="btn btn-primary rounded-pill w-100 " >
+                                Previous
+                            </a>
+                            
+                        </div>
+                        <div class="col m-2">
+                            <a href="/signup_university3.html" type="submit" class="btn btn-primary rounded-pill w-100" >
+                                Next
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color:#3B5998 " class="my-3">Or join with</p>
+                    <div class="row d-flex justify-content-center align-items-center my-3">
+                        <div class="col-md-2">
+                            <a href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?redirect_uri=storagerelay%3A%2F%2Fhttps%2Fwww.linkedin.com%3Fid%3Dauth372506&response_type=permission%20id_token&scope=email%20profile%20openid&openid.realm&client_id=990339570472-k6nqn1tpmitg8pui82bfaun3jrpmiuhs.apps.googleusercontent.com&ss_domain=https%3A%2F%2Fwww.linkedin.com&fetch_basic_profile=true&gsiwebsdk=2&service=lso&o2v=1&flowName=GeneralOAuthFlow">
+                                <img src="/Assets/D_images/google_logo.png" class="img-fluid" style="max-width: 30; max-height: 30;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="#">
+                                <img src="/Assets/D_images/facebook_logo.png" class="img-fluid" style="max-width: 30; max-height: 30;">
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="#">
+                                <img src="/Assets/D_images/linkedin_logo.png" class="img-fluid" style="max-width: 30; max-height: 30;">
+                            </a>
+                        </div>
+                    </div>
+                    <p style="color:#3B5998 " class="my-5">Already have an account?
+                        <a href="/signin.html">Sign in</a>
+                    </p>
+                </div>
+                
+            </div>
+        </div>  
+    </div>
+ 
+    
+
+    <footer class="bg-light py-4 mt-5" style="background-color: #F2F2FF;">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="nav-link fw-bold fs-4" aria-current="page" href="/index.html">Deducation</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="nav-link" aria-current="page" href="#">About us</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="nav-link" aria-current="page" href="#">User assignment</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="nav-link" aria-current="page" href="#">Privacy policy</a>
+                </div>
+                <div class="col-md-3 text-center text-md-end">
+                    <p>&copy; 2023</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+  
+
+  
+    
+   
+</body>
+</html>
